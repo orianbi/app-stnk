@@ -20,7 +20,8 @@ class Asset(models.Model):
     )
     status = (
         ('hidup','hidup'),
-        ('mati','mati')
+        ('mati','mati'),
+        ('peringatan','peringatan'),
     )
 
     opd              = models.ForeignKey(Opd, on_delete=models.CASCADE)
