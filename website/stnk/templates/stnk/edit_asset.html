@@ -1,0 +1,16 @@
+{% extends 'stnk/index.html' %} {% block content %}
+
+<div class="container mt-5 col-lg-7">
+  <center><h1>Edit Asset</h1></center>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="col-lg mx-auto">
+      <form method="post" action="">
+        {% csrf_token %} {{form.as_p}}
+        <button type="submit" class="btn btn-primary mt-3">Ubah</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
