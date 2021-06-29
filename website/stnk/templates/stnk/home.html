@@ -1,4 +1,12 @@
-{% extends 'stnk/index.html' %} {% block content %}
+{% extends 'stnk/index.html' %} {% load static %}
+
+{% block scripts %}
+
+<script src= {% static '/js/main.js/' %} defer></script>
+
+{% endblock scripts %}
+
+ {% block content %}
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -45,29 +53,7 @@
               <th>AKSI</th>
             </tr>
           </thead>
-          <tfoot class="thead-dark">
-            <!-- <tr>
-              <th>NAMA OPD</th>
-              <th>KODE BARANG</th>
-              <th>NAMA BARANG</th>
-              <th>NAMA PEMEGANG</th>
-              <th>NOMOR REGISTER</th>
-              <th>TAHUN PEMBELIAN</th>
-              <th>NOMOR POLISI</th>
-              <th>BPKB</th>
-              <th>HARGA</th>
-              <th>RODA</th>
-              <th>BPKB DISIMPAN</th>
-              <th>PAJAK</th>
-              <th>PENGESAHAN</th>
-              <th>PENGGANTIAN STNK</th>
-              <th>KONDISI</th>
-              <th>AKTIF</th>
-              <th>MASA AKTIF</th>
-              <th>AKSI</th>
-            </tr> -->
-          </tfoot>
-          <tbody>
+          <tbody id="tbl-asset">
             {% for as in assets %}
             <tr>
               <td>{{as.opd}}</td>
@@ -86,7 +72,8 @@
               <td>{{as.penggantian_stnk}}</td>
               <td>{{as.kondisi}}</td>
               <td>{{as.status}}</td>
-              <td>{{as.masa_aktif|timeuntil}}</td>
+              <!-- <td>{{as.masa_aktif|timeuntil}}</td> -->
+              <td>{{as.masa_aktif}}</td>
               <td>
                 <a
                   href="{% url 'edit-asset' as.id%}"
@@ -110,4 +97,4 @@
 </div>
 <!-- /.container-fluid -->
 
-{% endblock %}
+{% endblock %} 

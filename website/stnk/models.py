@@ -39,7 +39,7 @@ class Asset(models.Model):
     penggantian_stnk = models.DecimalField(max_digits=15, decimal_places=2)
     kondisi          = models.CharField(choices=kon, max_length=100)
     status            = models.CharField(max_length=200, null=True, choices=status)
-    masa_aktif       = models.DateField(auto_now=False)
+    masa_aktif       = models.DateTimeField()
 
 
     def __str__(self):

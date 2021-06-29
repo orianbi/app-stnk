@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import Opd, Asset
 from .forms import FormOpd, FormAsset
 from django.contrib.auth import authenticate,login,logout
@@ -9,7 +9,10 @@ from django.conf import settings
 
 
 
+
 # # Create your views here.
+
+
 @login_required(login_url=settings.LOGIN_URL)
 def home(request):
     judul = "Halaman Home"

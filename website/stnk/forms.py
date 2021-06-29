@@ -41,7 +41,7 @@ class FormAsset(ModelForm):
             'penggantian_stnk':forms.NumberInput(attrs={'class':'form-control',"autocomplete":"off"}),
             'kondisi':forms.Select(attrs={'class':'form-control',"autocomplete":"off"}),
             'status':forms.Select(attrs={'class':'form-control',"autocomplete":"off"}),
-            'masa_aktif': forms.DateInput(attrs={'class':'form-control', 'type':'date'})
+            'masa_aktif': forms.DateTimeInput(attrs={'class':'form-control',"autocomplete":"off"})
         } 
 
         labels = {
