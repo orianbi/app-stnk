@@ -15,10 +15,10 @@
                   mb-1
                 "
               >
-                TOTAL STNK
+                STNK HIDUP
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {{total_assets}}
+                <a href="#"> {{assets_hidup}} </a>
               </div>
             </div>
           </div>
@@ -28,7 +28,7 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-4 col-md-6 mb-4">
-      <div class="card border-left-success shadow h-100 py-2">
+      <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col text-center">
@@ -36,14 +36,16 @@
                 class="
                   text-xs
                   font-weight-bold
-                  text-success text-uppercase
+                  text-warning text-uppercase
                   mb-1
                 "
               >
-                STNK HIDUP
+                STNK MATI < 30 HARI
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {{assets_hidup}}
+                <a href="{% url 'detail_peringatan' %}">
+                  {{assets_peringatan}}</a
+                >
               </div>
             </div>
           </div>
@@ -52,18 +54,18 @@
     </div>
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-4 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
+      <div class="card border-left-danger shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col text-center">
               <div
-                class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                class="text-xs font-weight-bold text-danger text-uppercase mb-1"
               >
                 STNK MATI
               </div>
 
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {{assets_mati}}
+                <a href="{% url 'detail_mati' %}"> {{assets_mati}} </a>
               </div>
             </div>
           </div>

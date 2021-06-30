@@ -1,26 +1,14 @@
-{% extends 'stnk/index.html' %} {% load static %}
-
-{% block scripts %}
-
-<script src= {% static '/js/main.js/' %} defer></script>
-
-{% endblock scripts %}
-
- {% block content %}
+{% extends 'stnk/index.html' %} {% block content %}
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800">{{ judul }}</h1>
-  {% include 'stnk/status.html' %}
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
-      <a href="{% url 'tambah_asset' %}" class="btn btn-primary mb-1 mt-3"
-        ><i class="fas fa-plus-circle"></i> Tambah</a
-      >
     </div>
 
     <div class="card-body">
@@ -44,7 +32,7 @@
               <th>HARGA</th>
               <th>RODA</th>
               <th>BPKB DISIMPAN</th>
-              <th>PAJAK</th>            
+              <th>PAJAK</th>
               <th>KONDISI</th>
               <th>STATUS</th>
               <th>MASA AKTIF</th>
@@ -52,34 +40,32 @@
             </tr>
           </thead>
           <tbody id="tbl-asset">
-            {% for as in assets %}
+            {% for dm in detail_mati %}
             <tr>
-              <td>{{as.opd}}</td>
-              <td>{{as.kode_barang}}</td>
-              <td>{{as.nama_barang}}</td>
-              <td>{{as.nama_pemegang}}</td>
-              <td>{{as.nomor_register}}</td>
-              <td>{{as.tahun_pembelian}}</td>
-              <td>{{as.nomor_polisi}}</td>
-              <td>{{as.bpkb}}</td>
-              <td>{{as.harga}}</td>
-              <td>{{as.roda}}</td>
-              <td>{{as.bpkb_disimpan}}</td>
-              <td>{{as.pajak | date:"d N Y"}}</td>              
-              <td>{{as.kondisi}}</td>
-              <td>{{as.status}}</td>
+              <td>{{dm.opd}}</td>
+              <td>{{dm.kode_barang}}</td>
+              <td>{{dm.nama_barang}}</td>
+              <td>{{dm.nama_pemegang}}</td>
+              <td>{{dm.nomor_register}}</td>
+              <td>{{dm.tahun_pembelian}}</td>
+              <td>{{dm.nomor_polisi}}</td>
+              <td>{{dm.bpkb}}</td>
+              <td>{{dm.harga}}</td>
+              <td>{{dm.roda}}</td>
+              <td>{{dm.bpkb_disimpan}}</td>
+              <td>{{dm.pajak | date:"d N Y"}}</td>
+              <td>{{dm.kondisi}}</td>
+              <td>{{dm.status}}</td>
               <!-- <td>{{as.masa_aktif|timeuntil}}</td> -->
-              <td>{{as.masa_aktif| date:"d N Y"}}
-                  {{as.masa_aktif| time:"H:i:s"}}
+              <td>
+                {{dm.masa_aktif| date:"d N Y"}} {{dm.masa_aktif| time:"H:i:s"}}
               </td>
               <td>
-                <a
-                  href="{% url 'edit-asset' as.id%}"
-                  class="btn btn-info btn-circle"
+                <a href="#" class="btn btn-info btn-circle"
                   ><i class="fas fa-edit"></i
                 ></a>
                 <a
-                  href="{% url 'hapus-asset' as.id  %}"
+                  href="#"
                   class="btn btn-danger btn-circle"
                   onclick="return confirm('Anda Yakin Mau Menghapus Data Asset ini?');"
                   ><i class="fas fa-trash"></i
@@ -95,4 +81,4 @@
 </div>
 <!-- /.container-fluid -->
 
-{% endblock %} 
+{% endblock %}

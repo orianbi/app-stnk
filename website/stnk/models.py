@@ -18,7 +18,7 @@ class Asset(models.Model):
         ('RR', 'RR'),
         ('RB', 'RB'),
     )
-    status = (
+    stts = (
         ('hidup','hidup'),
         ('mati','mati'),
         ('peringatan','peringatan'),
@@ -39,7 +39,7 @@ class Asset(models.Model):
     pengesahan       = models.DecimalField(max_digits=15, decimal_places=2)
     penggantian_stnk = models.DecimalField(max_digits=15, decimal_places=2)
     kondisi          = models.CharField(choices=kon, max_length=100)
-    status            = models.CharField(max_length=200, null=True, choices=status)
+    status            = models.CharField(max_length=200, null=True, choices=stts)
     masa_aktif       = models.DateTimeField()
 
 

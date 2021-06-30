@@ -16,20 +16,46 @@ from django.conf import settings
 @login_required(login_url=settings.LOGIN_URL)
 def home(request):
     judul = "Halaman Home"
-    assets = Asset.objects.all()
-    total_assets = assets.count()
+    assets = Asset.objects.all()  
     assets_hidup = assets.filter(status='hidup').count()
+    assets_peringatan = assets.filter(status='peringatan').count()
     assets_mati = assets.filter(status='mati').count()
 
     konteks = {
         'judul':judul,
         'assets':assets,
-        'total_assets':total_assets,
         'assets_hidup':assets_hidup,
+        'assets_peringatan':assets_peringatan,
         'assets_mati':assets_mati,
     }
 
     return render(request,'stnk/home.html', konteks)
+
+def statusPeringatan(request):
+    judul = "Detail Status Peringatan"
+
+    detail_peringatan = Asset.objects.filter(status='peringatan')
+    
+    konteks = {
+        'judul':judul,
+        'detail_peringatan':detail_peringatan,        
+    }
+
+
+    return render(request, 'stnk/status_peringatan.html', konteks)
+
+def statusMati(request):
+    judul = "Detail Status Mati"
+
+    detail_mati = Asset.objects.filter(status='mati')
+    
+    konteks = {
+        'judul':judul,
+        'detail_mati':detail_mati,        
+    }
+
+
+    return render(request, 'stnk/status_mati.html', konteks)
 
 @login_required(login_url=settings.LOGIN_URL)    
 def tambahAsset(request):

@@ -153,7 +153,7 @@
               shadow
             "
           >
-            <!-- Sidebar Toggle (Topbar) -->
+            {% comment %} <!-- Sidebar Toggle (Topbar) -->
             <button
               id="sidebarToggleTop"
               class="btn btn-link d-md-none rounded-circle mr-3"
@@ -188,7 +188,7 @@
                   </button>
                 </div>
               </div>
-            </form>
+            </form> {% endcomment %}
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -335,6 +335,9 @@
 $(function () {
       $("#id_masa_aktif").datetimepicker( {
          format:'Y-m-d H:i',
+      });
+       $("#id_pajak").datepicker( {
+         format:'Y-m-d',
       });
     });
   </script>

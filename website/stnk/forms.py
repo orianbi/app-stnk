@@ -36,7 +36,7 @@ class FormAsset(ModelForm):
             'harga':forms.NumberInput(attrs={'class':'form-control',"autocomplete":"off"}),
             'roda':forms.TextInput(attrs={'class':'form-control',"autocomplete":"off"}),
             'bpkb_disimpan':forms.Select(attrs={'class':'form-control',"autocomplete":"off"}),
-            'pajak': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
+            'pajak': forms.DateInput(attrs={'class':'form-control',"autocomplete":"off"}),
             'pengesahan':forms.NumberInput(attrs={'class':'form-control',"autocomplete":"off"}),
             'penggantian_stnk':forms.NumberInput(attrs={'class':'form-control',"autocomplete":"off"}),
             'kondisi':forms.Select(attrs={'class':'form-control',"autocomplete":"off"}),
