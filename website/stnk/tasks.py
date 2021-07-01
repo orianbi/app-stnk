@@ -7,27 +7,31 @@ def test(arg):
     print(arg)
     return arg
 
-
+ 
 @celery_app.task
 def update_stnk_status():
     waktu_sekrang = timezone.now()
-    
-    waktu_peringatan = waktu_sekrang - timezone.timedelta(days=30)
-    waktu_mati = waktu_sekrang > timezone.timedelta(days=30)  
-    assets = Asset.objects.filter(masa_aktif__range=(waktu_peringatan, waktu_sekrang))
-    assets_mati = Asset.objects.filter(masa_aktif__range=(waktu_mati, waktu_sekrang))
+    waktu_peringatan = waktu_sekrang + timezone.timedelta(days=30)
+    assets_peringatan = Asset.objects.filter(masa_aktif__range=(waktu_sekrang, waktu_peringatan))
+    for asset_p in assets_peringatan:
+        asset_p.status = 'peringatan'
+        asset_p.save() 
 
-    
-    for asset in assets:
 
-        if(asset.status == 'peringatan'):
-             asset.save()
-        elif(asset.status == 'mati'):
-            asset.save()
-        else:
-            pass
-
+    # if assets_peringatan:
         
+    #     assets_peringatan.save()
+    # if assets_mati:
        
+    #     assets_mati.save()
+
+
+    assets_mati = Asset.objects.filter(status__in=['hidup', 'peringatan'], masa_aktif__date__lt=waktu_sekrang)
+    for asset_m in assets_mati:
+        asset_m.status = 'mati'
+        asset_m.save()
+
 
     return 'Selesai....'
+      
+   

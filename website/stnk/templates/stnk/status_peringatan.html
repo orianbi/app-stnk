@@ -61,11 +61,13 @@
                 {{dp.masa_aktif| date:"d N Y"}} {{dp.masa_aktif| time:"H:i:s"}}
               </td>
               <td>
-                <a href="#" class="btn btn-info btn-circle"
+                <a
+                  href="{% url 'edit-asset' dp.id %}"
+                  class="btn btn-info btn-circle"
                   ><i class="fas fa-edit"></i
                 ></a>
                 <a
-                  href="#"
+                  href="{% url 'hapus-asset' dp.id %}"
                   class="btn btn-danger btn-circle"
                   onclick="return confirm('Anda Yakin Mau Menghapus Data Asset ini?');"
                   ><i class="fas fa-trash"></i
