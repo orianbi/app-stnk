@@ -17,7 +17,7 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat_schedule = {
     'update-stnk-status-task': {
         'task': 'stnk.tasks.update_stnk_status',
-        'schedule': 20,
+        'schedule': 1 * 60,
         'args': ()
     },
 }

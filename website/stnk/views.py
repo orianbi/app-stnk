@@ -30,7 +30,7 @@ def home(request):
     }
 
     return render(request,'stnk/home.html', konteks)
-
+@login_required(login_url=settings.LOGIN_URL)
 def statusPeringatan(request):
     judul = "Detail Status Peringatan"
 
@@ -43,7 +43,7 @@ def statusPeringatan(request):
 
 
     return render(request, 'stnk/status_peringatan.html', konteks)
-
+@login_required(login_url=settings.LOGIN_URL)
 def statusMati(request):
     judul = "Detail Status Mati"
 
