@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render,redirect,reverse, HttpResponse
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Opd, Asset
 from .forms import FormOpd, FormAsset
@@ -6,11 +6,19 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from .resources import AssetResource
 
 
 
 
 # # Create your views here.
+
+def exportExcel(request):
+    assets = AssetResource()
+    dataset = assets.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=asset.xls'
+    return response
 
 
 @login_required(login_url=settings.LOGIN_URL)

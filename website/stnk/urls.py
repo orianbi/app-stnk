@@ -13,6 +13,7 @@ urlpatterns = [
     path('edit/<int:id>/', views.editAsset, name='edit-asset'),
     path('detail_peringatan/', views.statusPeringatan, name='detail_peringatan'),
     path('detail_mati/', views.statusMati, name='detail_mati'),
+    path('export_excel/', views.exportExcel, name='export_excel'),
 ]
 
 
