@@ -1,7 +1,9 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Opd, Asset
-
+from .models import Opd, Asset, Profile
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext_lazy as _
 
 
 class FormOpd(ModelForm):
@@ -63,3 +65,36 @@ class FormAsset(ModelForm):
             'status':'STATUS',
             'masa_aktif':'MASA AKTIF',
         }
+
+class FormUser(UserCreationForm):        
+    class Meta:
+         model = User
+         fields = ('username','email','password1','password2',)
+
+         widgets = {
+            "username": forms.TextInput({"class": "form-control"}),
+            "email": forms.EmailInput({"class": "form-control"}),            
+            "password1": forms.PasswordInput({"class": "form-control"}),
+            "password2": forms.PasswordInput({"class": "form-control"}),
+        }
+
+         labels = {
+            'username': _('Username'),            
+            'email': _('Email')
+            
+        }
+
+
+class InfoUser(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields=('role',)
+
+        widgets = {
+            'role':forms.Select(attrs={'class':'form-control',"autocomplete":"off"}),          
+        }
+
+        labels = {                     
+            'role':'Level User',
+
+         }
