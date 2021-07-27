@@ -1,12 +1,4 @@
-{% extends 'stnk/index.html' %} {% load static %}
-
-{% block scripts %}
-
-<script src= {% static '/js/main.js/' %} defer></script>
-
-{% endblock scripts %}
-
- {% block content %}
+{% extends 'stnk/index.html' %} {% load static %} {% block content %}
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -17,23 +9,24 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-    <div class="row">
-    <div class="col-md-12">
-    <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
-      <a href="{% url 'tambah_asset' %}" class="btn btn-primary mb-1 mt-3"
-        ><i class="fas fa-plus-circle"></i> Tambah</a> 
-        <a href="{% url 'export_excel' %}" class="btn btn-success mb-1 mt-3" style="float: right">
-         <i class="fas fa-download fa-sm text-white-50"></i> Download Excel</a> 
-    </div>      
-
-     
-    
+      <div class="row">
+        <div class="col-md-12">
+          <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+          <a href="{% url 'tambah_asset' %}" class="btn btn-primary mb-1 mt-3"
+            ><i class="fas fa-plus-circle"></i> Tambah</a
+          >
+          <a
+            href="{% url 'export_excel' %}"
+            class="btn btn-success mb-1 mt-3"
+            style="float: right"
+          >
+            <i class="fas fa-download fa-sm text-white-50"></i> Download
+            Excel</a
+          >
+        </div>
+      </div>
     </div>
-       
-    </div>
 
- 
-    
     <div class="card-body">
       <div class="table-responsive">
         <table
@@ -55,7 +48,7 @@
               <th>HARGA</th>
               <th>RODA</th>
               <th>BPKB DISIMPAN</th>
-              <th>PAJAK</th>            
+              <th>PAJAK</th>
               <th>KONDISI</th>
               <th>STATUS</th>
               <th>MASA AKTIF</th>
@@ -76,12 +69,12 @@
               <td>{{as.harga}}</td>
               <td>{{as.roda}}</td>
               <td>{{as.bpkb_disimpan}}</td>
-              <td>{{as.pajak | date:"d N Y"}}</td>              
+              <td>{{as.pajak | date:"d N Y"}}</td>
               <td>{{as.kondisi}}</td>
               <td>{{as.status}}</td>
               <!-- <td>{{as.masa_aktif|timeuntil}}</td> -->
-              <td>{{as.masa_aktif| date:"d N Y"}}
-                  {{as.masa_aktif| time:"H:i:s"}}
+              <td>
+                {{as.masa_aktif| date:"d N Y"}} {{as.masa_aktif| time:"H:i:s"}}
               </td>
               <td>
                 <a
@@ -106,4 +99,4 @@
 </div>
 <!-- /.container-fluid -->
 
-{% endblock %} 
+{% endblock %}

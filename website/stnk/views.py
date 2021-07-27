@@ -1,17 +1,56 @@
 from django.shortcuts import render,redirect,reverse, HttpResponse
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import Opd, Asset
-from .forms import FormOpd, FormAsset
+from .models import Opd, Asset, Profile
+from .forms import FormOpd, FormAsset, FormUser, InfoUser
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .resources import AssetResource
+from django.contrib.auth.models import User
+
 
 
 
 
 # # Create your views here.
+
+def user(request):
+    judul = "Halaman User"
+    users = User.objects.all()
+
+    konteks = {
+        'judul': judul,
+        'users':users,
+    }
+
+
+    return render(request,'stnk/user.html', konteks)
+
+def tambahUser(request):
+    judul = "Halaman Tambah User"
+    if request.method == 'POST':
+        user_form = FormUser(request.POST)
+        role = InfoUser(request.POST)       
+        if user_form.is_valid() and role.is_valid():
+            user = user_form.save()
+            user.save()
+            prof = role.save(commit=False)
+            prof.user = user
+            prof.save()            
+
+            return redirect('user')
+    else:
+       user_form = FormUser()
+       role = InfoUser()
+
+    konteks = {
+        'judul':judul,
+        'user_form':user_form,
+        'role':role,
+        
+    }
+    return render(request,'stnk/tambah_user.html',konteks)
 
 def exportExcel(request):
     assets = AssetResource()

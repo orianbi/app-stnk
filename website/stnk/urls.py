@@ -14,6 +14,8 @@ urlpatterns = [
     path('detail_peringatan/', views.statusPeringatan, name='detail_peringatan'),
     path('detail_mati/', views.statusMati, name='detail_mati'),
     path('export_excel/', views.exportExcel, name='export_excel'),
+    path('user/', views.user, name='user'),
+    path('tambah_user/', views.tambahUser, name='tambah_user'),
 ]
 
 
