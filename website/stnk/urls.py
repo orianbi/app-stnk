@@ -16,6 +16,8 @@ urlpatterns = [
     path('export_excel/', views.exportExcel, name='export_excel'),
     path('user/', views.user, name='user'),
     path('tambah_user/', views.tambahUser, name='tambah_user'),
+    path('edit_user/<int:id>/', views.editUser, name='edit_user'),
+    path('hapus_user/<int:id>/', views.hapusUser, name='hapus_user'),
 ]
 
 

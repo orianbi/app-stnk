@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 
 
 # # Create your views here.
-
+@login_required(login_url=settings.LOGIN_URL)
 def user(request):
     judul = "Halaman User"
     users = User.objects.all()
@@ -27,6 +27,8 @@ def user(request):
 
     return render(request,'stnk/user.html', konteks)
 
+
+@login_required(login_url=settings.LOGIN_URL)
 def tambahUser(request):
     judul = "Halaman Tambah User"
     if request.method == 'POST':
@@ -52,6 +54,27 @@ def tambahUser(request):
     }
     return render(request,'stnk/tambah_user.html',konteks)
 
+@login_required(login_url=settings.LOGIN_URL)
+def editUser(request, id):
+    users = User.objects.get(id=id)
+    user_form = FormUser(instance=users)
+    if request.method == 'POST':
+        user_form = FormUser(request.POST, instance=users)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('user')
+    konteks = {
+        'user_form':user_form,
+    }
+
+    return render(request, 'stnk/edit_user.html', konteks)
+
+@login_required(login_url=settings.LOGIN_URL)
+def hapusUser(request, id):
+    users = User.objects.get(id=id)
+    users.delete()
+    return redirect('user')
+@login_required(login_url=settings.LOGIN_URL)
 def exportExcel(request):
     assets = AssetResource()
     dataset = assets.export()

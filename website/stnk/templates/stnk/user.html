@@ -45,14 +45,16 @@
               <td>{{us.profile.role}}</td>
 
               <td>
-                <a href="#" class="btn btn-info btn-circle"
+                <a
+                  href="{% url 'edit_user' us.id %}"
+                  class="btn btn-info btn-circle"
                   ><i class="fas fa-edit"></i
                 ></a>
                 |
                 <a
-                  href="#"
+                  href="{% url 'hapus_user' us.id %}"
                   class="btn btn-danger btn-circle"
-                  onclick="return confirm('Anda Yakin Mau Menghapus Data Opd ini?');"
+                  onclick="return confirm('Anda Yakin Mau Menghapus Data User ini?');"
                   ><i class="fas fa-trash"></i
                 ></a>
               </td>

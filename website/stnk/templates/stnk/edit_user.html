@@ -86,7 +86,7 @@
         {% endfor %}
 	</div> <!-- form-group end.// -->  
   <div class="form-group">
-		<label>{{ role.role.label }}</label>
+		<label>{{ user_form.profile.role.label }}</label>
 	    {% if role.is_bound %}
             {% if role.role.errors %}
                 {% render_field role.role class="form-control is-invalid" %}
