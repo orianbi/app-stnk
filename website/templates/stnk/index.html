@@ -78,9 +78,8 @@
         <hr class="sidebar-divider" />
 
         <!-- Heading -->
+        {% comment %} {% if request.user.profile.role == 'Superuser' %} {% endcomment %}
         <div class="sidebar-heading">Administrator</div>
-
-        <!-- Nav Item - Dashboard -->
         <li class="nav-item">
           <a class="nav-link" {% if request.path == '/stnk/' %}class="selected" {% endif %} href="{% url 'home' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -93,8 +92,9 @@
             <span>User</span></a
           >
         </li> 
-        <!-- Divider -->
         <hr class="sidebar-divider" />
+        {% comment %} {% endif %} {% endcomment %}
+        <!-- Divider -->
 
         <!-- Heading -->
         <div class="sidebar-heading">User</div>
